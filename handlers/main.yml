@@ -1,0 +1,5 @@
+---
+- name: "restart nutanix_exporter"
+  service:
+    name: "nutanix_exporter"
+    state: "restarted"

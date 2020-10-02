@@ -1,0 +1,18 @@
+{{ ansible_managed | comment }}                                                                                                                                                                                                               
+
+[Unit]
+Description=Prometheus nutanix Exporter
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/nutanix-exporter -listen-address "{{ nutanix_exporter_port }}" -nutanix.conf /etc/nutanix_exporter/config.yml 
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=nutanix-exporter
+RestartSec=1
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

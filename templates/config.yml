@@ -1,0 +1,10 @@
+---
+ntnx-pa2-01.kosc.net:
+  nutanix_host: https://ntnx-pa2-01.kosc.net/
+  nutanix_user: {{prism_user}}
+  nutanix_password: {{prism_password}}
+
+ntnx-itx2-01.kosc.net:
+  nutanix_host: https://ntnx-itx2-01.kosc.net/
+  nutanix_user: {{prism_user}}
+  nutanix_password: {{prism_password}}

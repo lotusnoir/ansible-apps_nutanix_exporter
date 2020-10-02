@@ -1,0 +1,6 @@
+---
+nutanix_exporter_version:   "0.3.2"
+nutanix_exporter_port:      ":9110"
+nutanix_exporter_url:       "https://github.com/lotusnoir/nutanix-exporter/releases/download/{{ nutanix_exporter_version }}/nutanix-exporter"
+prism_user:  "admin"
+prism_password: ""

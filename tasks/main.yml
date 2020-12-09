@@ -1,35 +1,50 @@
 ---
+- name: "End play if distribution not suported"
+  meta: end_host
+  when:
+    - ansible_distribution != "Debian"
+    - ansible_distribution != "Ubuntu"
+    - ansible_distribution != "CentOS"
+
 - name: "Check for nutanix-exporter binary"
   stat:
-    path: "/usr/local/bin/nutanix-exporter"
+    path: '{{ nutanix_exporter_install_dir }}/nutanix-exporter'
   changed_when: false
   register: nutanix_binary
 
-- when: not nutanix_binary.stat.exists
+- when: not nutanix_binary.stat.exists or nutanix_exporter_force_install|bool
   block:
     - name: "Download nutanix-exporter..."
       get_url:
         url: '{{ nutanix_exporter_url }}'
-        dest: /usr/local/bin/nutanix-exporter
-        timeout: 120
-        mode: 0755
+        dest: '{{ nutanix_exporter_install_dir }}/nutanix-exporter'
+        timeout: '60'
+        mode: '0755'
+
+    - name: "Ensure install dir exists"
+      file:
+        path: '{{ item }}'
+        state: directory
+        mode: '0755'
+      with_items:
+        - '{{ nutanix_exporter_install_dir }}'
+        - '{{ nutanix_exporter_config_dir }}'
 
 - name: "Create config file"
   template:
-    src: config.yml
-    dest: /etc/nutanix_exporter/
-    mode: 0644
+    src: 'config.yml.j2'
+    dest: '{{ nutanix_exporter_config_dir }}/config.yml'
+    mode: '0644'
   notify: "restart nutanix_exporter"
 
 - name: "Create symtemd for nutanix_exporter"
   template:
-    src: nutanix_exporter.service.j2
-    dest: /etc/systemd/system/nutanix_exporter.service
-    mode: 0644
+    src: 'nutanix_exporter.service.j2'
+    dest: '/etc/systemd/system/nutanix_exporter.service'
+    mode: '0640'
   notify: "restart nutanix_exporter"
 
-
-- name: "Start nutanix_exporter.service"
+- name: "Enable and Start nutanix_exporter.service"
   systemd:
     name: nutanix_exporter
     state: started

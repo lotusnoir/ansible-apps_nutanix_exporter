@@ -1,4 +1,4 @@
-{{ ansible_managed | comment }}                                                                                                                                                                                                               
+{{ ansible_managed | comment }} 
 
 [Unit]
 Description=Prometheus nutanix Exporter
@@ -8,7 +8,9 @@ StartLimitInterval=0
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/local/bin/nutanix-exporter -listen-address "{{ nutanix_exporter_port }}" -nutanix.conf /etc/nutanix_exporter/config.yml 
+ExecStart={{ nutanix_exporter_install_dir }}/nutanix-exporter \
+          -listen-address ":{{ nutanix_exporter_listen_port }}" \
+          -nutanix.conf {{ nutanix_exporter_config_dir }}/config.yml 
 ExecReload=/bin/kill -HUP $MAINPID
 SyslogIdentifier=nutanix-exporter
 RestartSec=1

@@ -11,7 +11,10 @@ Deploy [nutanix_exporter](https://github.com/JacobCalmes/nutanix-exporter) to ex
 | Name           | Default Value | Description                        |
 | -------------- | ------------- | -----------------------------------|
 | `nutanix_exporter_version` | 0.3.2 | nutanix_exporter version |
-| `nutanix_exporter_listen_port` | :9110 | port to expose prometheus metrics |
+| `nutanix_exporter_config_dir` | /etc/nutanix_exporter | directory to install config file |
+| `nutanix_exporter_install_dir` | /usr/local/bin | directory to install binary |
+| `nutanix_exporter_force_install` | false | force install variable |
+| `nutanix_exporter_listen_port` | 9110 | port to expose prometheus metrics |
 | `prism_user` | admin | prism user |
 | `prism_password` | "" | prism password |
 
@@ -31,4 +34,4 @@ Deploy [nutanix_exporter](https://github.com/JacobCalmes/nutanix-exporter) to ex
 
 ## License
 
-This project is licensed under MIT License. See [LICENSE](/LICENSE) for more details.
+This project is licensed under Apache License. See [LICENSE](/LICENSE) for more details.

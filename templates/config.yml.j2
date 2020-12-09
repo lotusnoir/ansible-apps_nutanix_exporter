@@ -1,10 +1,7 @@
 ---
-ntnx-pa2-01.kosc.net:
-  nutanix_host: https://ntnx-pa2-01.kosc.net/
-  nutanix_user: {{prism_user}}
-  nutanix_password: {{prism_password}}
-
-ntnx-itx2-01.kosc.net:
-  nutanix_host: https://ntnx-itx2-01.kosc.net/
-  nutanix_user: {{prism_user}}
-  nutanix_password: {{prism_password}}
+{% for host in nutanix_exporter_clusters %}
+{{ host.name }}:
+  nutanix_host: {{ host.url }}
+  nutanix_user: {{ host.user }}
+  nutanix_password: {{ host.password }}
+{% endfor %}

@@ -18,10 +18,6 @@ galaxy_info:
     - name: "RedHat"
       versions:
         - "Maipo"
-    - name: "CentOS"
-      versions:
-        - "8"
-        - "7"
     - name: "Rocky"
       versions:
         - "8"

@@ -1,5 +1,5 @@
 ---
 - name: "restart nutanix_exporter"
-  service:
+  ansible.builtin.service:
     name: "nutanix_exporter"
     state: "restarted"

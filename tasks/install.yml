@@ -34,14 +34,14 @@
     src: 'config.yml.j2'
     dest: '{{ nutanix_exporter_config_dir }}/config.yml'
     mode: '0644'
-  notify: "restart nutanix_exporter"
+  notify: "Restart nutanix_exporter"
 
 - name: "Create symtemd for nutanix_exporter"
   ansible.builtin.template:
     src: 'nutanix_exporter.service.j2'
     dest: '/etc/systemd/system/nutanix_exporter.service'
     mode: '0640'
-  notify: "restart nutanix_exporter"
+  notify: "Restart nutanix_exporter"
 
 - name: "Enable and Start nutanix_exporter.service"
   ansible.builtin.service:

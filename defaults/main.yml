@@ -19,5 +19,5 @@ nutanix_exporter_clusters:
 
 # Systemd options
 nutanix_exporter_listen_port: "9110"
-prism_user: "admin"
-prism_password: ""
+#prism_user: "admin"
+#prism_password: ""

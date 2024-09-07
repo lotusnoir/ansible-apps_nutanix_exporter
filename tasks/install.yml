@@ -12,6 +12,10 @@
       ansible.builtin.package:
         name: "ca-certificates"
         state: present
+      register: pkg_result
+      retries: 12
+      delay: 10
+      until: pkg_result is success
 
     - name: "Download nutanix-exporter..."
       ansible.builtin.get_url:

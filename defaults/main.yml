@@ -1,12 +1,12 @@
 ---
-# Binary install
+### Binary install
 nutanix_exporter_version: "0.3.2"
 nutanix_exporter_url: "https://github.com/lotusnoir/nutanix-exporter/releases/download/{{ nutanix_exporter_version }}/nutanix-exporter"
 nutanix_exporter_config_dir: "/etc/nutanix_exporter"
 nutanix_exporter_install_dir: "/usr/local/bin"
 nutanix_exporter_force_install: false
 
-# config file
+### config file
 nutanix_exporter_clusters:
   - name: cluster1.exemple.net
     url: https://nutanix-01.exemple.net/
@@ -17,7 +17,7 @@ nutanix_exporter_clusters:
     user: toto
     password: toto_passwd
 
-# Systemd options
+### Systemd options
 nutanix_exporter_listen_port: "9110"
-#prism_user: "admin"
-#prism_password: ""
+# prism_user: "admin"
+# prism_password: ""

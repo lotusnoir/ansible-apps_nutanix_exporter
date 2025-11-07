@@ -22,6 +22,7 @@
 ## Description
 
 Deploy [nutanix_exporter](https://github.com/JacobCalmes/nutanix-exporter) to expose nutanix metrics to prometheus.
+
 ## Requirements
 
 none
